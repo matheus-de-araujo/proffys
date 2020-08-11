@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/partials/header.css">
+    <link rel="stylesheet" href="/styles/partials/forms.css">
+    <link rel="stylesheet" href="/styles/partials/page-give-classes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+    <script src="/script/addField.js" defer ></script>
+</head>
+
+<body id="page-give-classes">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a href="/"><img src="/images/icons/back.svg" alt="Voltar"></a>
+                <img src="/images/logo.svg" alt="Proffy">
+            </div>
+            <!--top-bar-container-->
+
+            <div class="header-content">
+                <strong>Que incrível que você quer dar aulas</strong>
+                <p>O primeiro passo, é preencher o formulário de inscrição</p>
+            </div>
+            <!--header-content-->
+        </header>
+        <!--page-header-->
+        <main>
+            <form action="/save-classes" id="create-class" method="POST">
+                <fieldset>
+                    <legend>Seus dados</legend>
+                    <div class="input-block">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <!--input-block-->
+                    <div class="input-block">
+                        <label for="avatar">Link da sua foto <small>(comece com https://)</small></label>
+                        <input type="url" id="avatar" name="avatar" required>
+                    </div>
+                    <!--input-block-->
+                    <div class="input-block">
+                        <label for="whatsapp">whatsapp <small>(somente números)</small></label>
+                        <input type="number" name="whatsapp" id="number" required>
+                    </div>
+                    <!--input-block-->
+                    <div class="textarea-block">
+                        <label for="bio">Biografia</label>
+                        <textarea name="bio" id="bio" required></textarea>
+                    </div>
+                    <!--textarea-block-->
+                </fieldset>
+
+                <fieldset>
+                    <legend>Sobre a aula</legend>
+                    <div class="select-block">
+                        <label for="subject">Matéria</label>
+                        <select name="subject" id="subject">
+                            <option value="">Selecione uma opção</option>
+                            {%for subject in subjects%}
+                                <option value="{{loop.index}}">{{subject}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <!--select-block-->
+                    <div class="input-block">
+                        <label for="cost">Custo da sua Hora/Aula <small>(R$)</small></label>
+                        <input type="number" id="cost" name="cost" required>
+                    </div>
+                    <!--input-block-->
+
+                </fieldset>
+    
+                <fieldset id="schedule-items">
+                    <legend>Horários disponíveis
+                        <button id="add-time" type="button" >+ Novo Horário</button>
+                    </legend>
+
+                    <div class="schedule-item">
+                        <div class="select-block">
+                            <label for="weekday">Dia da semana</label>
+                            <select name="weekday[]" required>
+                                <option value="">Selecione uma opção</option>    
+                                {%for weekday in weekdays%}
+                                <option value="{{loop.index0}}">{{weekday}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        <!--select-block-->
+                        <div class="input-block">
+                            <label for="time_from">Das</label>
+                            <input type="time" name="time_from[]" required>
+                        </div>
+                        <!--input-block-->
+
+                        <div class="input-block">
+                            <label for="time_to">Até</label>
+                            <input type="time" name="time_to[]" required>
+                        </div>
+                        <!--input-block-->
+                    </div>
+                    <!--schedule-item-->
+                
+                </fieldset>
+            </form>
+            <footer>
+                <p>
+                    <img src="/images/icons/warning.svg" alt="Aviso importante"> Importante! <br> Preencha todos os dados
+                </p>
+                <button type="submit" form="create-class">Salvar cadastro</button>
+            </footer>
+        </main>
+    </div>
+    <!--container-->
+</body>
+
+</html>
