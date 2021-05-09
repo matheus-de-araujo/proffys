@@ -87,5 +87,3 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **Sqlite-async**
 
 ---
-
-Feito por Matheus de Araújo com :blue_heart:
