@@ -21,6 +21,9 @@
   <a href="#-tecnologias">Tecnologias</a> • 
 </p>
 
+<h4 align="center"> 
+	🚧  Status: Finalizado ✔️ 🚧
+</h4>
 
 ## 💻 Sobre o projeto
 
